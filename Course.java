@@ -1,12 +1,18 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Course {
     private String courseID;
     private String courseName;
     private int courseCredit;
+    private ArrayList<Student> studentList;
+
 
     public Course(String courseID, String courseName, int courseCredit) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseCredit = courseCredit;
+        this.studentList = new ArrayList<Student>();
     }
 
     public String getCourseID() {
@@ -21,6 +27,10 @@ public class Course {
         return courseName;
     }
 
+    public ArrayList<Student> getStudentList() {
+        return studentList;
+    }
+
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
@@ -31,6 +41,15 @@ public class Course {
 
     public void setCourseCredit(int courseCredit) {
         this.courseCredit = courseCredit;
+    }
+
+    public boolean enroll (Student student) {
+        if (studentList.contains(student)){
+            return false;
+        }
+        studentList.add(student);
+        student.getCourseList().add(this);
+        return true;
     }
 
     @Override

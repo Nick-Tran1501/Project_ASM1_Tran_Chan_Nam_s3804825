@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+
 public class Student {
     private String studentID;
     private String studentName;
     private String studentDOB;
+    private ArrayList<Course> courseList;
 
     public Student(String studentID, String studentName, String studentDOB) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentDOB = studentDOB;
+        this.courseList= new ArrayList<Course>();
     }
 
     public String getStudentID() {
@@ -31,6 +35,10 @@ public class Student {
 
     public void setStudentDOB(String studentDOB) {
         this.studentDOB = studentDOB;
+    }
+
+    public ArrayList<Course> getCourseList() {
+        return courseList;
     }
 
     @Override
