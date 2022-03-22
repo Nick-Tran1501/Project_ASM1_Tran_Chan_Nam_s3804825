@@ -1,5 +1,7 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class StudentList {
     private ArrayList<Student> studentL;
@@ -13,6 +15,7 @@ public class StudentList {
         return studentL;
     }
 
+
     public void setStudentL(ArrayList<Student> studentL) {
         this.studentL = studentL;
     }
@@ -23,7 +26,13 @@ public class StudentList {
         else{
             studentL.add(students);
         }
+
     }
+
+
+
+
+
     @Override
     public String toString() {
         return "StudentList{"+
@@ -38,4 +47,15 @@ public class StudentList {
     public void setStudents(Student students) {
         this.students = students;
     }
+
+    public void addtofile() throws FileNotFoundException {
+        FileWriter studentfile = null;
+        try {
+            studentfile = new FileWriter("SLfiles.csv");
+            studentfile.write(getStudentL().toString());
+            studentfile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+}
 }

@@ -1,8 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws FileNotFoundException {
         Course c1 = new Course("C001", "SADI", 12);
         Course c2 = new Course("C002", "Further", 12);
         Student s1 = new Student("s001", "minh", "15/01/2001");
@@ -37,6 +38,7 @@ public class Test {
 //        System.out.println(c1.getStudentList().toString());
         student1.addStudent(s1);
         student1.addStudent(s2);
+        student1.addtofile();
 //        student1.addCourse(c1);
 //        student1.setSemester("2021A");
         System.out.println(student1);
