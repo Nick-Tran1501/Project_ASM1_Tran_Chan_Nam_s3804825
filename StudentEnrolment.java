@@ -1,9 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class StudentEnrolment {
-        private ArrayList<Student> studentE;
+    private ArrayList<Student> studentE;
         private ArrayList<Course> courseE;
         private String semester;
         private Student students;
@@ -86,7 +86,7 @@ public class StudentEnrolment {
     @Override
     public String toString() {
         return "StudentEnrolment{" +
-                "student=" + studentE +
+                "student=" + studentE + "\n"+
                 ", course=" + courseE +
                 ", semester='" + semester + '\'' +
                 '}';

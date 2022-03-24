@@ -1,14 +1,13 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Test {
-    public static void main(String args[]) throws FileNotFoundException {
+    public static void main(String args[]) throws IOException {
         Course c1 = new Course("C001", "SADI", 12);
         Course c2 = new Course("C002", "Further", 12);
-        Student s1 = new Student("s001", "minh", "15/01/2001");
-        Student s2 = new Student("s002", "ben", "15/01/2001");
         ArrayList<String> studentEnroll = new ArrayList<>();
 //        ArrayList<String> studentCourse = new ArrayList<>();
 
@@ -23,33 +22,35 @@ public class Test {
         } else {
             System.out.println("Already in there");
         }
-        if (c1.enroll(s2)) {
+        if (c1.enroll(s3)) {
             System.out.println("Successfully enrolled");
 
         } else {
             System.out.println("Already in there");
         }
 
-        if (c2.enroll(s1)) {
+        if (c2.enroll(s3)) {
             System.out.println("Successfully enrolled");
 
         } else {
             System.out.println("Already in there");
         }
 
-        studentEnroll.add(s1.getCourseList().toString());
+//        studentEnroll.add(s3.getCourseList().toString());
 //        studentCourse.add(c1.getStudentList().toString());
-
-        System.out.println(c1.getStudentList().toString());
-        System.out.println(s3.getCourseList().toString());
-//        student1.addStudent(s1);
-//        student1.addStudent(s2);
-////        student1.addtofile();
 //
+//        System.out.println(c1.getStudentList().toString());
+//        System.out.println(s3.getCourseList().toString());
+//        student1.addStudent(s3);
+//
+////
 //        student1.addCourse(c1);
 //        student1.setSemester("2021A");
 //        System.out.println(student1);
-//        System.out.println(s1.toString() + "\n" + studentEnroll);
+//        student1.writetofile();
+        System.out.println(s3.getStudentName() + ":" + s3.getCourseList());
 //        System.out.println(studentCourse);
+
+
     }
 }
