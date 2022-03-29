@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.CoderResult;
 import java.util.Scanner;
 
 
@@ -9,7 +10,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 //        StudentsOfCourse();
 //        CoursesOfStudent();
-//        StudentandCourse();
+
+Addcoursestosem();
 
 
     }
@@ -45,9 +47,15 @@ public class Main {
         }
         System.out.println(s1.getStudentName() + ":" + s1.getCourseList());
     }
-    public static void  StudentandCourse(){
 
-
+    public static void Addcoursestosem(){
+        StudentEnrolment system = new StudentEnrolment();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Semester: ");
+        String semesterinput= scanner.next();
+        System.out.println("Enter CourseID, CourseName, CourseCredit");
+        Course course = new Course(scanner.next(),scanner.next(),scanner.nextInt());
+        system.coursecreator(semesterinput,course);
+        System.out.println(system.coursecreator(semesterinput,course));
     }
-
 };

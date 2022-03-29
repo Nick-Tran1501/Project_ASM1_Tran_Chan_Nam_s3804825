@@ -83,18 +83,20 @@ public class StudentEnrolment {
     }
 
     public ArrayList<Enrolment> setEnrolments() {
-
-
-
         return enrolments;
     }
 
     public HashMap<String, ArrayList<Course>> getCourseandsemeseter() {
+        setCourseandsemeseter();
         return courseandsemeseter;
     }
 
-    public void setCourseandsemeseter(HashMap<String, ArrayList<Course>> courseandsemeseter) {
-        this.courseandsemeseter = courseandsemeseter;
+    public HashMap<String, ArrayList<Course>> setCourseandsemeseter() {
+        ArrayList<Course> cour = getCourses();
+
+        courseandsemeseter.put("2022A",cour);
+
+        return courseandsemeseter;
     }
 
     public HashMap<Course, ArrayList<Student>> getStudentlistinCourse() {
@@ -114,11 +116,35 @@ public class StudentEnrolment {
         this.semeseterenrol = semeseterenrol;
     }
 
-    public void addcoursetosemester(){
+    public boolean newone(String userinput, String optionnalID, String optionalName, String optionalvalue ){
+        if (userinput == "Students"){
+            Student student = new Student(optionnalID,optionalName,optionalvalue);
+            students.add(student);
 
+        }
+        if (userinput == "Course"){
+            Course course = new Course(optionnalID,optionalName,Integer. parseInt(optionalvalue));
+            courses.add(course);
+        }
+       return true;
     }
 
-// để làm Enrolment cần create Student với Courses, List of Course in one semester
+    public HashMap<String, Course> coursecreator(String sem, Course coursesL){
+        HashMap<String, Course> listcour = new HashMap<>();
+        for( String listsem: getSemesters()){
+            if(sem.equals(listsem)){
+                for (Course cour: getCourses()){
+                    if(cour.getCourseID().contains(coursesL.getCourseID())){
+                        listcour.put(sem,coursesL);
+                    }
+                    listcour.put(sem,coursesL);
+                }
+            }
+        }
+        return listcour;
+    }
+
+// để làm Enrolment cần create Student với Courses, List of Courses in one semester
 
 
 
