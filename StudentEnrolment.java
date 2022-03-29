@@ -1,6 +1,5 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StudentEnrolment {
     private ArrayList<Student> studentE;
@@ -8,6 +7,12 @@ public class StudentEnrolment {
         private String semester;
         private Student students;
         private Course courses;
+        private HashMap<String, HashMap> listEnrolment;
+
+
+    public StudentEnrolment(HashMap<String, HashMap> listEnrolment) {
+        this.listEnrolment = listEnrolment;
+    }
 
     public StudentEnrolment(String semester, Student students, Course courses) {
 
@@ -63,6 +68,15 @@ public class StudentEnrolment {
         this.courses = courses;
     }
 
+
+    public HashMap<String, HashMap> getListEnrolment() {
+        return listEnrolment;
+    }
+
+    public void setListEnrolment(HashMap<String, HashMap> listEnrolment) {
+        this.listEnrolment = listEnrolment;
+    }
+
     public void addStudent(Student students){
 
         if(studentE.contains(students)){
@@ -82,7 +96,24 @@ public class StudentEnrolment {
         }
     }
 
+    public void update(Student students, Course courses){
+        HashMap<Course, ArrayList<Student>> enrol= new HashMap<>();
+       if(courses.getStudentList().contains(students)){
+           System.out.println("False");
+       }
+        else{
+            courses.getStudentList().add(students);
+//           System.out.println("success");
+//           System.out.println(courses+"="+courses.getStudentList());
+           enrol.put(courses,courses.getStudentList());
+           System.out.println(enrol);
+       }
 
+        //add student list
+        //add course list
+        // Enrolment list
+
+    }
     @Override
     public String toString() {
         return "StudentEnrolment{" +

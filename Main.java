@@ -2,11 +2,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        StudentsOfCourse();
+//        StudentsOfCourse();
 //        CoursesOfStudent();
+//        StudentandCourse();
 //        writetofile();
 
     }
@@ -16,7 +19,7 @@ public class Main {
         Student s1 = new Student(scanner.nextLine(), scanner.nextLine(), scanner.nextLine());
         System.out.println("please input your StudentID, Name, DOB");
         Student s2 = new Student(scanner.nextLine(), scanner.nextLine(), scanner.nextLine());
-//        System.out.println("Please input CourseID, CourseName, And Credit");
+        System.out.println("Please input CourseID, CourseName, And Credit");
         Course c1 = new Course("C001", "SADI", 12);
         c1.enroll(s1);
         c1.enroll(s2);
@@ -41,6 +44,19 @@ public class Main {
             System.out.println("Already in there");
         }
         System.out.println(s1.getStudentName() + ":" + s1.getCourseList());
+    }
+    public static void  StudentandCourse(){
+        StudentEnrolment student1= new StudentEnrolment();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("please input your StudentID, Name, DOB");
+        Student s1 = new Student(scanner.nextLine(), scanner.nextLine(), scanner.nextLine());
+        System.out.println("Please input CourseID, CourseName, And Credit");
+        Course c1 = new Course(scanner.nextLine(), scanner.nextLine(), scanner.nextInt());
+        student1.addStudent(s1);
+        student1.addCourse(c1);
+        student1.setSemester(scanner.nextLine());
+        System.out.println(student1);
+
     }
     public static void writetofile() throws IOException {
         StudentEnrolment student1 = new StudentEnrolment();
