@@ -10,6 +10,7 @@ public class StudentEnrolment {
     private ArrayList<String> semesters;
     private ArrayList<Enrolment> enrolments;
     private HashMap<String,ArrayList<Course>> courseandsemeseter;
+    private HashMap<Course, ArrayList<Student>> studentlistinCourse;
     private HashMap<Student,HashMap<String,ArrayList<Course>>> semeseterenrol;
 
     public StudentEnrolment() {
@@ -18,6 +19,7 @@ public class StudentEnrolment {
         this.semesters = new ArrayList<>();
         this.enrolments = new ArrayList<>();
         this.courseandsemeseter = new HashMap<>();
+        this.studentlistinCourse = new HashMap<>();
         this.semeseterenrol = new HashMap<>();
     }
 
@@ -25,8 +27,9 @@ public class StudentEnrolment {
         return enrolment;
     }
 
-    public void setEnrolment(Enrolment enrolment) {
-        this.enrolment = enrolment;
+    public Enrolment setEnrolment(Enrolment enrolment) {
+
+        return enrolment;
     }
 
     public ArrayList<Student> getStudents() {
@@ -36,14 +39,10 @@ public class StudentEnrolment {
 
     public ArrayList<Student> setStudents() {
         Scanner studentinput= new Scanner(System.in);
-        int continueornot = studentinput.nextInt();
-        while(continueornot != 2) {
             System.out.println("StudentID, Full Name, Your DOB:");
             Student student = new Student(studentinput.next(), studentinput.next(), studentinput.next());
             students.add(student);
             return students;
-        }
-        return students;
     }
 
     public ArrayList<Course> getCourses(){
@@ -79,11 +78,15 @@ public class StudentEnrolment {
     }
 
     public ArrayList<Enrolment> getEnrolments() {
+        setEnrolments();
         return enrolments;
     }
 
-    public void setEnrolments(ArrayList<Enrolment> enrolments) {
-        this.enrolments = enrolments;
+    public ArrayList<Enrolment> setEnrolments() {
+
+
+
+        return enrolments;
     }
 
     public HashMap<String, ArrayList<Course>> getCourseandsemeseter() {
@@ -92,6 +95,14 @@ public class StudentEnrolment {
 
     public void setCourseandsemeseter(HashMap<String, ArrayList<Course>> courseandsemeseter) {
         this.courseandsemeseter = courseandsemeseter;
+    }
+
+    public HashMap<Course, ArrayList<Student>> getStudentlistinCourse() {
+        return studentlistinCourse;
+    }
+
+    public void setStudentlistinCourse(HashMap<Course, ArrayList<Student>> studentlistinCourse) {
+        this.studentlistinCourse = studentlistinCourse;
     }
 
     public HashMap<Student, HashMap<String, ArrayList<Course>>> getSemeseterenrol() {
@@ -107,6 +118,7 @@ public class StudentEnrolment {
 
     }
 
+// để làm Enrolment cần create Student với Courses, List of Course in one semester
 
 
 
