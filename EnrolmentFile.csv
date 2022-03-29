@@ -1,2 +1,0 @@
-StudentEnrolment{student=[Student{studentID='s123456', studentName='MMMM', studentDOB='15/01/5222'}]
-, course=[Course{courseID='123', courseName='Further', courseCredit=12}], semester='2021A'}
