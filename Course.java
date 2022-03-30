@@ -1,7 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Course {
+public class Course extends ArrayList<Course> {
     private String courseID;
     private String courseName;
     private int courseCredit;

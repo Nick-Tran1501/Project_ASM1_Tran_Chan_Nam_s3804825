@@ -37,12 +37,14 @@ public class StudentEnrolment {
         return students;
     }
 
-    public ArrayList<Student> setStudents() {
-        Scanner studentinput= new Scanner(System.in);
-            System.out.println("StudentID, Full Name, Your DOB:");
-            Student student = new Student(studentinput.next(), studentinput.next(), studentinput.next());
-            students.add(student);
-            return students;
+    public ArrayList<Student> setStudents(){
+        Student student1 = new Student("s3804825","Tran Chan Nam", "15/01/2001");
+        Student student2 = new Student("s3804826","Pham Ly Thuy Vy","08/03/2001");
+        Student student3 = new Student("s3804827","Larry","09/01/2001");
+            students.add(student1);
+            students.add(student2);
+            students.add(student3);
+        return students;
     }
 
     public ArrayList<Course> getCourses(){
@@ -51,9 +53,9 @@ public class StudentEnrolment {
     }
 
     public ArrayList<Course> setCourses() {
-        Course c1 = new Course("BP456","Futher",12);
-        Course c2 = new Course("BP789","Programming",12);
-        Course c3= new Course("BP123","Software",12);
+        Course c1 = new Course("COSC2440", "Further Programming", 12);
+        Course c2 = new Course("ISYS2101", "SEPM", 12);
+        Course c3 = new Course("FSN2001", "Fashion", 12);
         // add Courses
         courses.add(c1);
         courses.add(c2);
@@ -83,6 +85,7 @@ public class StudentEnrolment {
     }
 
     public ArrayList<Enrolment> setEnrolments() {
+
         return enrolments;
     }
 
@@ -108,199 +111,119 @@ public class StudentEnrolment {
     }
 
     public HashMap<Student, HashMap<String, ArrayList<Course>>> getSemeseterenrol() {
+        setSemeseterenrol();
+        return semeseterenrol;
+    }
+
+    public HashMap<Student, HashMap<String, ArrayList<Course>>>  setSemeseterenrol() {
+        //check all student variables, course variables, semester
+        HashMap<String, ArrayList<Course>> semandcourse = new HashMap<>();
+        Student student = new Student("s123456","Nam","15/01/2001");
 
         return semeseterenrol;
     }
 
-    public void setSemeseterenrol(HashMap<Student, HashMap<String, ArrayList<Course>>> semeseterenrol) {
-        this.semeseterenrol = semeseterenrol;
-    }
-
     public boolean newone(String userinput, String optionnalID, String optionalName, String optionalvalue ){
-        if (userinput == "Students"){
+        if (userinput == "Student"){
+            System.out.println("StudentID, Student Name, DOB: ");
             Student student = new Student(optionnalID,optionalName,optionalvalue);
             students.add(student);
-
+            System.out.println(students);
         }
+
         if (userinput == "Course"){
+            System.out.println("CourseID, CourseName, Credit: ");
             Course course = new Course(optionnalID,optionalName,Integer. parseInt(optionalvalue));
             courses.add(course);
         }
        return true;
     }
 
-    public HashMap<String, Course> coursecreator(String sem, Course coursesL){
-        HashMap<String, Course> listcour = new HashMap<>();
+    public HashMap<String, ArrayList<Course>> coursecreator(String sem, Course coursesL){
         for( String listsem: getSemesters()){
-            if(sem.equals(listsem)){
-                for (Course cour: getCourses()){
-                    if(cour.getCourseID().contains(coursesL.getCourseID())){
-                        listcour.put(sem,coursesL);
+            if(listsem.contains(sem)){
+                for (Course cour: courses){
+                    if(cour.getCourseID().equals(coursesL.getCourseID()) && cour.getCourseName().equals(coursesL.getCourseName()) && cour.getCourseID().equals(coursesL.getCourseID())){
+                        courses.add(coursesL);
+                        ArrayList<Course> newcour = courseandsemeseter.get(sem);
+                        if(newcour.contains(coursesL)){
+                            return courseandsemeseter;
+                        }
+                        newcour.add(coursesL);
+                        courseandsemeseter.put(sem,newcour);
                     }
-                    listcour.put(sem,coursesL);
                 }
             }
         }
-        return listcour;
+        return courseandsemeseter;
     }
+
+    public ArrayList<Enrolment> addenrolmentlist(Enrolment enrolment){
+        for(Enrolment enrols: enrolments)
+        if(enrols.getStudent().getStudentID().equals(enrolment.getStudent().getStudentID()) &&
+                enrols.getCourse().getCourseID().equals(enrolment.getCourse().getCourseID()) &&
+                enrols.getSemester().equals(enrolment.getSemester())
+        ){
+            System.out.println("Already");
+            return enrolments;
+        }
+        enrolments.add(enrolment);
+        System.out.println("Successfully, Thank you");
+        return enrolments;
+    }
+
+    public boolean addenrolments(String stuIDinput, String courIDinput, String seminput){
+        for(String sems: semesters){
+            if(seminput.equals(sems)){
+                for (Course courID : courseandsemeseter.get(sems)) {
+                    if (courIDinput.equals(courID.getCourseID())) {
+                        for (Student stuID : students) {
+                            if (stuIDinput.equals(stuID.getStudentID())) {
+                                Enrolment enrol = new Enrolment(stuID,courID,sems);
+                                for(Enrolment enrols: enrolments)
+                                    if(enrols.getStudent().getStudentID().equals(enrolment.getStudent().getStudentID()) &&
+                                            enrols.getCourse().getCourseID().equals(enrolment.getCourse().getCourseID()) &&
+                                            enrols.getSemester().equals(enrolment.getSemester())
+                                    ){
+                                        System.out.println("Already");
+                                    }
+                                addenrolmentlist(enrol);
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+        return true;
+    }
+
+    // remove
+    public void dropcourse(String stuIDinput){
+    for (Student stuID: students){
+        if(stuIDinput.equals(stuID.getStudentID())){
+
+
+        }
+    }
+    }
+
+    // update
+    public void update(){
+
+    }
+
+    // getOne
+
+    //getAll
+
 
 // để làm Enrolment cần create Student với Courses, List of Courses in one semester
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-//    private ArrayList<Student> studentE;
-//    private ArrayList<Course> courseE;
-//    private String semester;
-//    private Student students;
-//    private Course courses;
-//    private HashMap<Student, HashMap<String, ArrayList<Course>>> semesterenrolment;
-//    private HashMap<String, HashMap> listEnrolment;
-//
-//    public HashMap<Student, HashMap<String, ArrayList<Course>>> getSemesterenrolment() {
-//        return semesterenrolment;
-//    }
-//
-//    public void setSemesterenrolment(HashMap<Student, HashMap<String, ArrayList<Course>>> semesterenrolment) {
-//        this.semesterenrolment = semesterenrolment;
-//    }
-//
-//
-//
-//
-//    public StudentEnrolment(HashMap<String, HashMap> listEnrolment) {
-//        this.listEnrolment = listEnrolment;
-//    }
-//
-//    public StudentEnrolment(String semester, Student students, Course courses) {
-//
-//
-//        this.semester = semester;
-//        this.students = students;
-//        this.courses = courses;
-//    }
-//
-//    public StudentEnrolment(){
-//
-//        this.studentE = new ArrayList<Student>();
-//        this.courseE =  new ArrayList<Course>();
-//        this.semesterenrolment = new HashMap<>();
-//    }
-//
-//    public ArrayList<Student> getStudentE() {
-//        return studentE;
-//    }
-//
-//    public void setStudentE(ArrayList<Student> studentE) {
-//        this.studentE = studentE;
-//    }
-//
-//    public ArrayList<Course> getCourseE() {
-//        return courseE;
-//    }
-//
-//    public void setCourseE(ArrayList<Course> courseE) {
-//        this.courseE = courseE;
-//    }
-//
-//    public String getSemester() {
-//        return semester;
-//    }
-//
-//    public void setSemester(String semester) {
-//        this.semester = semester;
-//    }
-//
-//    public Student getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Student students) {
-//        this.students = students;
-//    }
-//
-//    public Course getCourses() {
-//        return courses;
-//    }
-//
-//    public void setCourses(Course courses) {
-//        this.courses = courses;
-//    }
-//
-//
-//    public HashMap<String, HashMap> getListEnrolment() {
-//        return listEnrolment;
-//    }
-//
-//    public void setListEnrolment(HashMap<String, HashMap> listEnrolment) {
-//        this.listEnrolment = listEnrolment;
-//    }
-//
-//    public void addStudent(Student students){
-//
-//        if(studentE.contains(students)){
-//            System.out.println("say hello");
-//        }
-//        else{
-//            studentE.add(students);
-//        }
-//    }
-//
-//    public void addCourse(Course courses){
-//        if(courseE.contains(courses)){
-//            System.out.println("say hello");
-//        }
-//        else{
-//            courseE.add(courses);
-//        }
-//    }
-//
-//    public void update(String setSemester, ArrayList<Course> courseE){
-//        courseE = new ArrayList<>();
-//        HashMap<String, ArrayList<Course>> enrol= new HashMap<>();
-////       if(courses.getStudentList().contains(students)){
-////       }
-////        else{
-////            courses.getStudentList().add(students);
-//////           System.out.println(courses+"="+courses.getStudentList());
-////
-////
-////       }
-//        enrol.put(setSemester,courseE);
-//        System.out.println(enrol);
-////        this.semester="2021A";
-////        listEnrolment.put(getSemester(),enrol);
-//
-//
-//        //add student list
-//        //add course list
-//        // Enrolment list
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "StudentEnrolment{" +
-//                "student=" + studentE + "\n"+
-//                ", course=" + courseE +
-//                ", semester='" + semester + '\'' +
-//                '}';
-//    }
-//
-//
-
 
 
