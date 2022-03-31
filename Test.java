@@ -8,8 +8,8 @@ public class Test {
 //        System.out.println(student1.getCourses());
 //        System.out.println(student1.getStudents());
 
-        System.out.println(student1.coursecreator("2022A",c1));
-        System.out.println(student1.coursecreator("2022A",c2));
+//        System.out.println(student1.coursecreator("2022A",c1));
+//        System.out.println(student1.coursecreator("2022A",c2));
 
 //        System.out.println(student1.getCourseandsemeseter());
     }
