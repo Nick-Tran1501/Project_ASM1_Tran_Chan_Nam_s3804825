@@ -133,6 +133,7 @@ public class StudentEnrolment {
         courseArrayList.add(course);
         return courseArrayList;
     }
+
     public ArrayList<Student> addstudent(Student student){
             studentsArraylist.add(student);
             return studentsArraylist;
@@ -180,6 +181,25 @@ public class StudentEnrolment {
         }
     }
 
+    public void enroll(String stuIDinput, String courIDinput){
+        for(Student stu: studentsArraylist)
+        if (stu.getStudentID().equals(stuIDinput)) {
+            for (String sems : semesters)
+                for (Course cour : courseandsemeseter.get(sems))
+            if(cour.getCourseID().contains(courIDinput)){
+                if(stu.getCourseList().contains(cour)){
+                    System.out.println("Enrolled");
+                    return;
+                }
+                stu.getCourseList().add(cour);
+                System.out.println("Enrol Successfully, Please Don't Drop");
+                return;
+            }
+            System.out.println("Course not available");
+        }
+
+    }
+
     public ArrayList<Enrolment> addenrolmentlist(Enrolment enrolment){
         for(Enrolment enrols: enrolments)
         if(enrols.getStudent().getStudentID().equals(enrolment.getStudent().getStudentID()) &&
@@ -217,22 +237,33 @@ public class StudentEnrolment {
     }
 
     // remove
-    public void dropcourse(String stuIDinput){
-
+    public void dropcourse(String stuIDinput) {
     }
 
-    // update
-    public void update(){
-
+    // getOne: all Courses of a Student in a semester
+    public void getOne(String StuID){
+        for (Student stu: studentsArraylist)
+            if(stu.getStudentID().equals(StuID)){
+                for(Course cour: courseArrayList)
+                if(stu.getCourseList().contains(cour)) {
+                    System.out.println(cour.getCourseName());
+                }
+                return;
+            }
     }
 
-    // getOne
 
-    //getAll
+    //getAll: All Student in a Course
 
+    public void getAll(String courIDinput){
+        for (Course cour: courseArrayList)
+            if(cour.getCourseID().equals(courIDinput)){
+                for (Student stu: cour.getStudentList())
+                System.out.println(stu.getStudentName());
+                return;
+                    }
 
-// để làm Enrolment cần create Student với Courses, List of Courses in one semester
-
+            }
 
 }
 
