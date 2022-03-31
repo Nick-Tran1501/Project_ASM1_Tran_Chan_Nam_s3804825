@@ -1,7 +1,6 @@
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class StudentEnrolment {
     private Enrolment enrolment;
@@ -128,18 +127,6 @@ public class StudentEnrolment {
         return semeseterenrol;
     }
 
-    //add Course
-    public ArrayList<Course> addcourse(Course course){
-        courseArrayList.add(course);
-        return courseArrayList;
-    }
-
-    public ArrayList<Student> addstudent(Student student){
-            studentsArraylist.add(student);
-            return studentsArraylist;
-        }
-
-
     public boolean newone(String userinput, String optionnalID, String optionalName, String optionalvalue ){
         if (userinput.equals("Student")){
             for (Student student: studentsArraylist)
@@ -237,34 +224,53 @@ public class StudentEnrolment {
     }
 
     // remove
-    public void dropcourse(String stuIDinput) {
-    }
+    public void dropcourse(String stuIDinput, String courIDinput, String seminput) {
+        for (Enrolment enrolment : enrolments)
+            if (enrolment.getSemester().equals(seminput)) {
+                if (enrolment.getCourse().getCourseID().equals(courIDinput)) {
+                    if (enrolment.getStudent().getStudentID().equals(stuIDinput)) {
+                        enrolments.remove(enrolment);
+                        System.out.println("Drop Success");
+                        return;
+                    }
 
-    // getOne: all Courses of a Student in a semester
-    public void getOne(String StuID){
-        for (Student stu: studentsArraylist)
-            if(stu.getStudentID().equals(StuID)){
-                for(Course cour: courseArrayList)
-                if(stu.getCourseList().contains(cour)) {
-                    System.out.println(cour.getCourseName());
                 }
                 return;
             }
     }
 
+    // getOne: all Courses of a Student in a semester
+    public void getOne(String stuID,String seminput){
+        for (Enrolment enrolment: enrolments)
+            if (enrolment.getSemester().equals(seminput)){
+                if(enrolment.getStudent().getStudentID().equals(stuID)) {
+                    ArrayList<Enrolment> enrol = new ArrayList<>();
+                    enrol.add(enrolment);
+                    System.out.println(enrol.get(0).getCourse());
+
+                }
+            }
+        return;
+
+    }
 
     //getAll: All Student in a Course
 
-    public void getAll(String courIDinput){
-        for (Course cour: courseArrayList)
-            if(cour.getCourseID().equals(courIDinput)){
-                for (Student stu: cour.getStudentList())
-                System.out.println(stu.getStudentName());
-                return;
-                    }
+    public void getAll(String courIDinput, String seminput){
+        for (Enrolment enrolment: enrolments)
+            if (enrolment.getSemester().equals(seminput)){
+            if(enrolment.getCourse().getCourseID().equals(courIDinput)) {
+                ArrayList<Enrolment> enrol = new ArrayList<>();
+                enrol.add(enrolment);
+                System.out.println(enrol.get(0).getStudent());
 
+                }
             }
+        return;
+    }
 
 }
+
+
 
 
