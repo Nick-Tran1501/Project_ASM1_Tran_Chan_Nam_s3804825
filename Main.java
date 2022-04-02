@@ -1,10 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.charset.CoderResult;
-import java.sql.SQLOutput;
 import java.util.Scanner;
-
-
 
 public class Main {
 
@@ -39,7 +33,7 @@ public class Main {
             Scanner userinput = new Scanner(System.in);
             System.out.println("Hello Academic Assistant" +
                     "\n" +
-                    "What Do You Want to do:" +
+                    "Enrolment System Started:" +
                     "\n" +
                     "1.Create Student or Course " +
                     "\n" +
@@ -65,10 +59,22 @@ public class Main {
                     System.out.println("Please input DOB: ");
                     String studentDOB = userinput.nextLine();
                     enrolmentsystem.newone(createopt, studentID, studentName, studentDOB);
-                    continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
 
                 }
-                if (createopt.equalsIgnoreCase("Course")) {
+                else if (createopt.equalsIgnoreCase("Course")) {
                     System.out.println("Please input CourseID: ");
                     String courseID = userinput.nextLine();
                     System.out.println("Please input CourseName: ");
@@ -76,13 +82,24 @@ public class Main {
                     System.out.println("Please input credit: ");
                     String coursecredit = userinput.nextLine();
                     enrolmentsystem.newone(createopt, courseID, courseName, coursecredit);
-                    continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
-                continue;
             }
 
             //Show Student, Course, Semester List
-            if(inputopt.equals("2")){
+            else if(inputopt.equals("2")){
                 System.out.println("1. Student List" +
                         "\n" +
                         "2.Course List" +
@@ -91,43 +108,102 @@ public class Main {
                 String input = userinput.nextLine();
                 if (input.equals("1")){
                     System.out.println(enrolmentsystem.getStudentsArrayList());
-                    continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
                 if (input.equals("2")){
                     System.out.println(enrolmentsystem.getCourseArrayList());
-                    continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
                 if (input.equals("3")){
                     System.out.println(enrolmentsystem.getSemesters());
-                   continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
-                continue;
             }
 
             //Add Course to Semester
-            if (inputopt.equals("3")){
+            else if (inputopt.equals("3")){
                 System.out.println("Please input semester: ");
                 String sems = userinput.nextLine();
                 System.out.println("Please input CourseID: ");
                 String courseID = userinput.nextLine();
                 enrolmentsystem.coursecreator(sems,courseID);
                 System.out.println(enrolmentsystem.getCourseandsemeseter());
-                continue;
+                System.out.println("Do you want to continue: " +
+                        "\n" +
+                        "1. Yes" +
+                        "\n" +
+                        "2. No");
+                String contiopt = userinput.nextLine();
+                if(contiopt.equals("1")){
+                    continue;
+                }
+                else{
+                    System.out.println("Goodbye, Have a nice day");
+                    break;
+                }
             }
 
             //Student enroll Courses
-            if(inputopt.equals("4")){
+            else if(inputopt.equals("4")){
                 System.out.println("Please input student ID: ");
                 String stuID = userinput.nextLine();
                 System.out.println("Please input CourseID: ");
                 String courseID = userinput.nextLine();
                 enrolmentsystem.enroll(stuID,courseID);
-                continue;
 
+                System.out.println("Do you want to continue: " +
+                        "\n" +
+                        "1. Yes" +
+                        "\n" +
+                        "2. No");
+                String contiopt = userinput.nextLine();
+                if(contiopt.equals("1")){
+                    continue;
+                }
+                else{
+                    System.out.println("Goodbye, Have a nice day");
+                    break;
+                }
             }
 
             // Enrolment Add, delete, list
-            if(inputopt.equals("5")){
+            else if(inputopt.equals("5")){
                 System.out.println("1. Add to Enrolment list:" +
                         "\n" +
                         "2. Remove Enrolment: " +
@@ -136,7 +212,7 @@ public class Main {
                         "\n" +
                         "4. All Course of a Student in a semester: " +
                         "\n" +
-                        "e. All Student in a Course: ");
+                        "5. All Student in a Course: ");
                 String opt = userinput.nextLine();
                 if(opt.equals("1")){
                     System.out.println("Please input student ID: ");
@@ -146,9 +222,23 @@ public class Main {
                     System.out.println("Please input semester: ");
                     String sems = userinput.nextLine();
                     enrolmentsystem.addenrolments(stuID,courseID,sems);
-                    continue;
+                    System.out.println(enrolmentsystem.getEnrolments());
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
+
                 }
-                if(opt.equals("2")){
+                else if(opt.equals("2")){
                     System.out.println("Please input student ID: ");
                     String stuID = userinput.nextLine();
                     System.out.println("Please input CourseID: ");
@@ -156,29 +246,79 @@ public class Main {
                     System.out.println("Please input semester: ");
                     String sems = userinput.nextLine();
                     enrolmentsystem.dropcourse(stuID,courseID,sems);
-                    continue;
-                }
-                if(opt.equals("3")){
                     System.out.println(enrolmentsystem.getEnrolments());
-                    continue;
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
-                if(opt.equals("4")){
+                else if(opt.equals("3")){
+                    System.out.println(enrolmentsystem.getEnrolments());
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
+                }
+                else if(opt.equals("4")){
                     System.out.println("Please input student ID: ");
                     String stuID = userinput.nextLine();
                     System.out.println("Please input semester: ");
                     String sems = userinput.nextLine();
                     enrolmentsystem.getOne(stuID,sems);
-                    continue;
+                    System.out.println(enrolmentsystem.getEnrolments());
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
-                if (opt.equals("5")){
+                else if (opt.equals("5")){
                     System.out.println("Please input CourseID: ");
                     String courseID = userinput.nextLine();
                     System.out.println("Please input semester: ");
                     String sems = userinput.nextLine();
                     enrolmentsystem.getAll(courseID,sems);
-                    continue;
+                    System.out.println(enrolmentsystem.getEnrolments());
+                    System.out.println("Do you want to continue: " +
+                            "\n" +
+                            "1. Yes" +
+                            "\n" +
+                            "2. No");
+                    String contiopt = userinput.nextLine();
+                    if(contiopt.equals("1")){
+                        continue;
+                    }
+                    else{
+                        System.out.println("Goodbye, Have a nice day");
+                        break;
+                    }
                 }
-                continue;
             }
 
             // Exit System
@@ -189,22 +329,3 @@ public class Main {
         }
     }
 }
-
-            // enrol to list with sem
-//            enrolmentsystem.addenrolments("s3804825", "COSC2440", "2022A");
-//            enrolmentsystem.addenrolments("s3804825", "FSN2001", "2022A");
-//            enrolmentsystem.addenrolments("s3804826", "COSC2440", "2022A");
-//            enrolmentsystem.addenrolments("s3804825", "ISYS2101", "2022B");
-//            enrolmentsystem.addenrolments("s3804826", "ISYS2101", "2022B");
-//            System.out.println(enrolmentsystem.getEnrolments());
-
-            //Drop Course
-//            enrolmentsystem.dropcourse("s3804825", "COSC2440", "2022A");
-//            System.out.println(enrolmentsystem.getEnrolments());
-//
-//            // All Courses of a Student in a semester
-//            enrolmentsystem.getOne("s3804825", "2022A");
-//
-//            // All Students in a Course
-//            enrolmentsystem.getAll("COSC2440", "2022A");
-//
