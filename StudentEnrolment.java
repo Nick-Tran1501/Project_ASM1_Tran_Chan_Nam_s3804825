@@ -132,6 +132,7 @@ public class StudentEnrolment {
             for (Student student: studentsArraylist)
                 if (student.getStudentID().equals(optionnalID)){
                     System.out.println("Exist");
+                   return false;
                 }
             Student student = new Student(optionnalID,optionalName,optionalvalue);
             studentsArraylist.add(student);
@@ -254,7 +255,8 @@ public class StudentEnrolment {
 
     }
 
-    //getAll: All Student in a Course
+    //getAll: 1
+
 
     public void getAll(String courIDinput, String seminput){
         for (Enrolment enrolment: enrolments)
