@@ -143,6 +143,7 @@ public class StudentEnrolment {
             for (Course cour : courseArrayList)
                 if (cour.getCourseID().equals(optionnalID)){
                     System.out.println("Exist");
+                   return false;
                 }
             Course course = new Course(optionnalID,optionalName,Integer. parseInt(optionalvalue));
             courseArrayList.add(course);
