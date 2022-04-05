@@ -38,7 +38,7 @@ public class Main {
                     1.Create Student or Course\s
                     2.Show Student, Course, Semester List
                     3.Add Course to Semester
-                    4.Student enroll Courses
+                    4.Student enrol Courses
                     5.Update Enrolment list
                     6.Exit""");
 
