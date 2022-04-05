@@ -59,11 +59,7 @@ public class Main {
                     System.out.println("Please input DOB: ");
                     String studentDOB = userinput.nextLine();
                     enrolmentsystem.newone(createopt, studentID, studentName, studentDOB);
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -82,11 +78,7 @@ public class Main {
                     System.out.println("Please input credit: ");
                     String coursecredit = userinput.nextLine();
                     enrolmentsystem.newone(createopt, courseID, courseName, coursecredit);
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -100,19 +92,11 @@ public class Main {
 
             //Show Student, Course, Semester List
             else if(inputopt.equals("2")){
-                System.out.println("1. Student List" +
-                        "\n" +
-                        "2.Course List" +
-                        "\n" +
-                        "3. Semester list");
+                System.out.println("1. Student List\n2.Course List\n3. Semester list");
                 String input = userinput.nextLine();
                 if (input.equals("1")){
                     System.out.println(enrolmentsystem.getStudentsArrayList());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -124,11 +108,7 @@ public class Main {
                 }
                 if (input.equals("2")){
                     System.out.println(enrolmentsystem.getCourseArrayList());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -140,11 +120,7 @@ public class Main {
                 }
                 if (input.equals("3")){
                     System.out.println(enrolmentsystem.getSemesters());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -164,11 +140,7 @@ public class Main {
                 String courseID = userinput.nextLine();
                 enrolmentsystem.coursecreator(sems,courseID);
                 System.out.println(enrolmentsystem.getCourseandsemeseter());
-                System.out.println("Do you want to continue: " +
-                        "\n" +
-                        "1. Yes" +
-                        "\n" +
-                        "2. No");
+                System.out.println("Do you want to continue: \n1. Yes\n2. No");
                 String contiopt = userinput.nextLine();
                 if(contiopt.equals("1")){
                     continue;
@@ -187,11 +159,7 @@ public class Main {
                 String courseID = userinput.nextLine();
                 enrolmentsystem.enroll(stuID,courseID);
 
-                System.out.println("Do you want to continue: " +
-                        "\n" +
-                        "1. Yes" +
-                        "\n" +
-                        "2. No");
+                System.out.println("Do you want to continue: \n1. Yes\n2. No");
                 String contiopt = userinput.nextLine();
                 if(contiopt.equals("1")){
                     continue;
@@ -223,11 +191,7 @@ public class Main {
                     String sems = userinput.nextLine();
                     enrolmentsystem.addenrolments(stuID,courseID,sems);
                     System.out.println(enrolmentsystem.getEnrolments());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -247,11 +211,7 @@ public class Main {
                     String sems = userinput.nextLine();
                     enrolmentsystem.dropcourse(stuID,courseID,sems);
                     System.out.println(enrolmentsystem.getEnrolments());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -263,11 +223,7 @@ public class Main {
                 }
                 else if(opt.equals("3")){
                     System.out.println(enrolmentsystem.getEnrolments());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -284,11 +240,7 @@ public class Main {
                     String sems = userinput.nextLine();
                     enrolmentsystem.getOne(stuID,sems);
                     System.out.println(enrolmentsystem.getEnrolments());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
@@ -305,11 +257,7 @@ public class Main {
                     String sems = userinput.nextLine();
                     enrolmentsystem.getAll(courseID,sems);
                     System.out.println(enrolmentsystem.getEnrolments());
-                    System.out.println("Do you want to continue: " +
-                            "\n" +
-                            "1. Yes" +
-                            "\n" +
-                            "2. No");
+                    System.out.println("Do you want to continue: \n1. Yes\n2. No");
                     String contiopt = userinput.nextLine();
                     if(contiopt.equals("1")){
                         continue;
